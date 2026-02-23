@@ -23,6 +23,19 @@
     </head>
     <body>
         <div id="map">
+	</div>
+	<div id="opacity-control" style="
+        position:absolute;
+        top:10px;
+        right:240px;
+        z-index:1000;
+        background:white;
+        padding:8px;
+        border-radius:4px;
+        font-size:14px;">
+        <label>Opacity</label><br>
+        <input type="range" id="opacitySlider"
+               min="0" max="1" step="0.05" value="0.5">
         </div>
         <script src="js/qgis2web_expressions.js"></script>
         <script src="js/leaflet.js"></script>
@@ -37,10 +50,10 @@
         <script src="js/leaflet.photon.js"></script>
         <script src="data/JeffCosubdivisions_2.js"></script>
         <script src="data/Birminghamcityblocks_15.js"></script>
-        <script src="data/AbandonedVacant_16.js"></script>
-        <script src="data/InstitutionalUses_17.js"></script>
-        <script src="data/StateFederalHighways_18.js"></script>
-        <script src="data/Parking_19.js"></script>
+        <script src="data/InstitutionalUses_16.js"></script>
+        <script src="data/AbandonedVacant_17.js"></script>
+        <script src="data/Parking_18.js"></script>
+        <script src="data/StateFederalHighways_19.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:false, maxZoom:20, minZoom:10
@@ -589,7 +602,7 @@
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(225,89,137,0.0)',
+                fillColor: 'rgba(255,255,255,0.0)',
                 interactive: false,
             }
         }
@@ -607,7 +620,7 @@
         });
         bounds_group.addLayer(layer_Birminghamcityblocks_15);
         map.addLayer(layer_Birminghamcityblocks_15);
-        function pop_AbandonedVacant_16(feature, layer) {
+        function pop_InstitutionalUses_16(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
@@ -620,50 +633,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_AbandonedVacant_16_0() {
+        function style_InstitutionalUses_16_0() {
             return {
-                pane: 'pane_AbandonedVacant_16',
-                opacity: 1,
-                color: 'rgba(128,14,16,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(130,28,198,0.5019607843137255)',
-                interactive: false,
-            }
-        }
-        map.createPane('pane_AbandonedVacant_16');
-        map.getPane('pane_AbandonedVacant_16').style.zIndex = 416;
-        map.getPane('pane_AbandonedVacant_16').style['mix-blend-mode'] = 'normal';
-        var layer_AbandonedVacant_16 = new L.geoJson(json_AbandonedVacant_16, {
-            attribution: '',
-            interactive: false,
-            dataVar: 'json_AbandonedVacant_16',
-            layerName: 'layer_AbandonedVacant_16',
-            pane: 'pane_AbandonedVacant_16',
-            onEachFeature: pop_AbandonedVacant_16,
-            style: style_AbandonedVacant_16_0,
-        });
-        bounds_group.addLayer(layer_AbandonedVacant_16);
-        function pop_InstitutionalUses_17(feature, layer) {
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
-            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
-			layer.on('popupopen', function(e) {
-				addClassToPopupIfMedia(content, e.popup);
-			});
-			layer.bindPopup(content, { maxHeight: 400 });
-        }
-
-        function style_InstitutionalUses_17_0() {
-            return {
-                pane: 'pane_InstitutionalUses_17',
+                pane: 'pane_InstitutionalUses_16',
                 opacity: 1,
                 color: 'rgba(56,128,54,1.0)',
                 dashArray: '',
@@ -672,24 +644,24 @@
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(77,175,74,0.5019607843137255)',
+                fillColor: 'rgba(77,175,74,1)',
                 interactive: false,
             }
         }
-        map.createPane('pane_InstitutionalUses_17');
-        map.getPane('pane_InstitutionalUses_17').style.zIndex = 417;
-        map.getPane('pane_InstitutionalUses_17').style['mix-blend-mode'] = 'normal';
-        var layer_InstitutionalUses_17 = new L.geoJson(json_InstitutionalUses_17, {
+        map.createPane('pane_InstitutionalUses_16');
+        map.getPane('pane_InstitutionalUses_16').style.zIndex = 416;
+        map.getPane('pane_InstitutionalUses_16').style['mix-blend-mode'] = 'normal';
+        var layer_InstitutionalUses_16 = new L.geoJson(json_InstitutionalUses_16, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_InstitutionalUses_17',
-            layerName: 'layer_InstitutionalUses_17',
-            pane: 'pane_InstitutionalUses_17',
-            onEachFeature: pop_InstitutionalUses_17,
-            style: style_InstitutionalUses_17_0,
+            dataVar: 'json_InstitutionalUses_16',
+            layerName: 'layer_InstitutionalUses_16',
+            pane: 'pane_InstitutionalUses_16',
+            onEachFeature: pop_InstitutionalUses_16,
+            style: style_InstitutionalUses_16_0,
         });
-        bounds_group.addLayer(layer_InstitutionalUses_17);
-        function pop_StateFederalHighways_18(feature, layer) {
+        bounds_group.addLayer(layer_InstitutionalUses_16);
+        function pop_AbandonedVacant_17(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
@@ -702,35 +674,35 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_StateFederalHighways_18_0() {
+        function style_AbandonedVacant_17_0() {
             return {
-                pane: 'pane_StateFederalHighways_18',
+                pane: 'pane_AbandonedVacant_17',
                 opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
+                color: 'rgba(128,14,16,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(231,113,72,0.5019607843137255)',
+                fillColor: 'rgba(130,28,198,1)',
                 interactive: false,
             }
         }
-        map.createPane('pane_StateFederalHighways_18');
-        map.getPane('pane_StateFederalHighways_18').style.zIndex = 418;
-        map.getPane('pane_StateFederalHighways_18').style['mix-blend-mode'] = 'normal';
-        var layer_StateFederalHighways_18 = new L.geoJson(json_StateFederalHighways_18, {
+        map.createPane('pane_AbandonedVacant_17');
+        map.getPane('pane_AbandonedVacant_17').style.zIndex = 417;
+        map.getPane('pane_AbandonedVacant_17').style['mix-blend-mode'] = 'normal';
+        var layer_AbandonedVacant_17 = new L.geoJson(json_AbandonedVacant_17, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_StateFederalHighways_18',
-            layerName: 'layer_StateFederalHighways_18',
-            pane: 'pane_StateFederalHighways_18',
-            onEachFeature: pop_StateFederalHighways_18,
-            style: style_StateFederalHighways_18_0,
+            dataVar: 'json_AbandonedVacant_17',
+            layerName: 'layer_AbandonedVacant_17',
+            pane: 'pane_AbandonedVacant_17',
+            onEachFeature: pop_AbandonedVacant_17,
+            style: style_AbandonedVacant_17_0,
         });
-        bounds_group.addLayer(layer_StateFederalHighways_18);
-        function pop_Parking_19(feature, layer) {
+        bounds_group.addLayer(layer_AbandonedVacant_17);
+        function pop_Parking_18(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
@@ -929,9 +901,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_Parking_19_0() {
+        function style_Parking_18_0() {
             return {
-                pane: 'pane_Parking_19',
+                pane: 'pane_Parking_18',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -940,28 +912,69 @@
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(255,0,13,0.5019607843137255)',
+                fillColor: 'rgba(255,0,13,1)',
                 interactive: false,
             }
         }
-        map.createPane('pane_Parking_19');
-        map.getPane('pane_Parking_19').style.zIndex = 419;
-        map.getPane('pane_Parking_19').style['mix-blend-mode'] = 'normal';
-        var layer_Parking_19 = new L.geoJson(json_Parking_19, {
+        map.createPane('pane_Parking_18');
+        map.getPane('pane_Parking_18').style.zIndex = 418;
+        map.getPane('pane_Parking_18').style['mix-blend-mode'] = 'normal';
+        var layer_Parking_18 = new L.geoJson(json_Parking_18, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_Parking_19',
-            layerName: 'layer_Parking_19',
-            pane: 'pane_Parking_19',
-            onEachFeature: pop_Parking_19,
-            style: style_Parking_19_0,
+            dataVar: 'json_Parking_18',
+            layerName: 'layer_Parking_18',
+            pane: 'pane_Parking_18',
+            onEachFeature: pop_Parking_18,
+            style: style_Parking_18_0,
         });
-        bounds_group.addLayer(layer_Parking_19);
+        bounds_group.addLayer(layer_Parking_18);
+        function pop_StateFederalHighways_19(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_StateFederalHighways_19_0() {
+            return {
+                pane: 'pane_StateFederalHighways_19',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(231,113,72,1)',
+                interactive: false,
+            }
+        }
+        map.createPane('pane_StateFederalHighways_19');
+        map.getPane('pane_StateFederalHighways_19').style.zIndex = 419;
+        map.getPane('pane_StateFederalHighways_19').style['mix-blend-mode'] = 'normal';
+        var layer_StateFederalHighways_19 = new L.geoJson(json_StateFederalHighways_19, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_StateFederalHighways_19',
+            layerName: 'layer_StateFederalHighways_19',
+            pane: 'pane_StateFederalHighways_19',
+            onEachFeature: pop_StateFederalHighways_19,
+            style: style_StateFederalHighways_19_0,
+        });
+        bounds_group.addLayer(layer_StateFederalHighways_19);
         var overlaysTree = [
-            {label: '<img src="legend/Parking_19.png" /> Parking', layer: layer_Parking_19},
-            {label: '<img src="legend/StateFederalHighways_18.png" /> State & Federal Highways', layer: layer_StateFederalHighways_18},
-            {label: '<img src="legend/InstitutionalUses_17.png" /> Institutional Uses', layer: layer_InstitutionalUses_17},
-            {label: '<img src="legend/AbandonedVacant_16.png" /> Abandoned & Vacant', layer: layer_AbandonedVacant_16},
+            {label: '<img src="legend/StateFederalHighways_19.png" /> State & Federal Highways', layer: layer_StateFederalHighways_19},
+            {label: '<img src="legend/Parking_18.png" /> Parking', layer: layer_Parking_18},
+            {label: '<img src="legend/AbandonedVacant_17.png" /> Abandoned & Vacant', layer: layer_AbandonedVacant_17},
+            {label: '<img src="legend/InstitutionalUses_16.png" /> Institutional Uses', layer: layer_InstitutionalUses_16},
             {label: '<img src="legend/Birminghamcityblocks_15.png" /> Birmingham city blocks', layer: layer_Birminghamcityblocks_15},
         {label: '<b>1956 Aerial Imagery</b>', collapsed: true, selectAllCheckbox: true, children: [
             {label: "Avon Park 1956", layer: layer_AvonPark1956_14},
@@ -990,6 +1003,23 @@
         });
         lay.addTo(map);
         setBounds();
+	document.getElementById('opacitySlider')
+    .addEventListener('input', function(e) {
+        var opacity = parseFloat(e.target.value);
+        [
+            layer_InstitutionalUses_16,
+            layer_AbandonedVacant_17,
+            layer_Parking_18,
+	    layer_StateFederalHighways_19
+        ].forEach(function(layer) {
+            if (layer && layer.setStyle) {
+                layer.setStyle({
+                    fillOpacity: opacity,
+                    opacity: opacity
+                });
+            }
+        });
+});
         L.ImageOverlay.include({
             getBounds: function () {
                 return this._bounds;
